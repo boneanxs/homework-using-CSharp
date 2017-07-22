@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1C85443F-CF36-4F8A-88D5-4A485FDF9092}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>HomePage</RootNamespace>
+    <AssemblyName>HomePage</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UHFReader18CSharp">
+      <HintPath>..\RFID_Read\RFID_Read\UHFReader18CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="websocket-sharp, Version=1.0.2.59611, Culture=neutral, PublicKeyToken=5660b08a1845a91e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\lenovo\Desktop\RFID_Read\RFID_Read\bin\Debug\websocket-sharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Login\CplHelper.cs">
+      <Link>CplHelper.cs</Link>
+    </Compile>
+    <Compile Include="10IsInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="10IsInfo.Designer.cs">
+      <DependentUpon>10IsInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="1Homepage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="1Homepage.Designer.cs">
+      <DependentUpon>1Homepage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="2Register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="2Register.Designer.cs">
+      <DependentUpon>2Register.cs</DependentUpon>
+    </Compile>
+    <Compile Include="3CustomerInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="3CustomerInfo.Designer.cs">
+      <DependentUpon>3CustomerInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="5ChargeRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="5ChargeRecord.Designer.cs">
+      <DependentUpon>5ChargeRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="6CustomRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="6CustomRecord.Designer.cs">
+      <DependentUpon>6CustomRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="7QualityAnalysis .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="7QualityAnalysis .Designer.cs">
+      <DependentUpon>7QualityAnalysis .cs</DependentUpon>
+    </Compile>
+    <Compile Include="8QAInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="8QAInfo.Designer.cs">
+      <DependentUpon>8QAInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="9Instock .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="9Instock .Designer.cs">
+      <DependentUpon>9Instock .cs</DependentUpon>
+    </Compile>
+    <Compile Include="Communal.cs" />
+    <Compile Include="ConsChangeInForms.cs" />
+    <Compile Include="EmailHelper.cs" />
+    <Compile Include="Form_scan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_scan.designer.cs">
+      <DependentUpon>Form_scan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory.Designer.cs">
+      <DependentUpon>Inventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="match.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="match.designer.cs">
+      <DependentUpon>match.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlanFloor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlanFloor.designer.cs">
+      <DependentUpon>PlanFloor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="realTimeShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="realTimeShow.Designer.cs">
+      <DependentUpon>realTimeShow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report.designer.cs">
+      <DependentUpon>Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesRecord.Designer.cs">
+      <DependentUpon>SalesRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UHFReaderHelper.cs" />
+    <EmbeddedResource Include="10IsInfo.resx">
+      <DependentUpon>10IsInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="1Homepage.resx">
+      <DependentUpon>1Homepage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="2Register.resx">
+      <DependentUpon>2Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="3CustomerInfo.resx">
+      <DependentUpon>3CustomerInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="5ChargeRecord.resx">
+      <DependentUpon>5ChargeRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="6CustomRecord.resx">
+      <DependentUpon>6CustomRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="7QualityAnalysis .resx">
+      <DependentUpon>7QualityAnalysis .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="8QAInfo.resx">
+      <DependentUpon>8QAInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="9Instock .resx">
+      <DependentUpon>9Instock .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_scan.resx">
+      <DependentUpon>Form_scan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory.resx">
+      <DependentUpon>Inventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="match.resx">
+      <DependentUpon>match.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlanFloor.resx">
+      <DependentUpon>PlanFloor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="realTimeShow.resx">
+      <DependentUpon>realTimeShow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report.resx">
+      <DependentUpon>Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesRecord.resx">
+      <DependentUpon>SalesRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="..\Login\App.config">
+      <Link>App.config</Link>
+    </None>
+    <None Include="Properties\DataSources\MODEL.Member.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1\MODEL.csproj">
+      <Project>{5c384731-20ae-4545-adb6-9538430908ac}</Project>
+      <Name>MODEL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{b9f74ce8-f41c-455e-a00a-7c94db9941ba}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\recharge.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\customrecord.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CDRWE.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CDRWE1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CDRWE2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CDRWE3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CDRWE4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\标题栏.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\标题栏2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\biaoti3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\无标题.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\register.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\生成质检单.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\质检单信息.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\扫描入库.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\入库单信息.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\库存盘点.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\report1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sale1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\detail.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2Q %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\recharge.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2Q.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2Q %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2Q %284%29.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
