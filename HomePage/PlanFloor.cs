@@ -34,27 +34,6 @@ namespace MIS
         //绘制得到的用户点
         MyPoint prePoint = new MyPoint(0, 0);
         MyPoint curPoint = new MyPoint(0.00,0.00);
-        private void drawCurPos()
-        {
-            //Point temp1 = new Point((int)prePoint.dx, (int)prePoint.dy);
-            //Point temp2 = new Point((int)curPoint.dx, (int)curPoint.dy);
-            //if (traceGraph.InvokeRequired)
-            //{
-            //    Action aciton = () =>
-            //    {
-            //        Graphics g = Graphics.FromImage(traceB);
-            //        g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;//消除锯齿
-            //        g.DrawLine(new Pen(Color.Red),temp1,temp2);
-            //    };
-            //    this.traceGraph.Invoke(aciton);
-            //}
-            //else
-            //{
-            //    Graphics g = Graphics.FromImage(traceB);
-            //    g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;//消除锯齿
-            //    g.DrawLine(new Pen(Color.Red), temp1, temp2);
-            //}
-        }
         Bitmap traceB = new Bitmap(picWid, picHei);
         private void PlanFloor_Load(object sender, EventArgs e)
         {
@@ -68,21 +47,6 @@ namespace MIS
             this.loc_Icon.Visible = false;
             this.traceGraph.Image = traceB;
         }
-        private void actionSet(Control e,string temp)
-        {
-            if (e.InvokeRequired)
-            {
-                Action<string> print = (x) =>
-                {
-                    e.Text = x.ToString();
-                };
-                e.Invoke(print, temp);
-            }
-            else
-            {
-                e.Text = temp;
-            }
-        }
         private void setLoc(MyPoint loc)
         {
             Point temp = new Point(Convert.ToInt32(loc.dx + 53), Convert.ToInt32(loc.dy + 45));
@@ -90,12 +54,15 @@ namespace MIS
             {
                 Action<Point> draw = (x) =>
                 {
+                    if (isClosed) return;
                     this.loc_Icon.Location = x;
                 };
+                if (isClosed) return;
                 this.loc_Icon.Invoke(draw, temp);
             }
             else
             {
+                if (isClosed) return;
                 this.loc_Icon.Location = temp;
             }
         }
@@ -118,24 +85,31 @@ namespace MIS
                 socket = new WebSocket(IP_Adr, "localSensePush-protocol");
             }
             socket.OnMessage += (sender, e) => {
-                socMutex.WaitOne();
-                string[] temp = e.Data.Split('-');
-                if (temp[0] == "CC" && temp[1] == "5F" && temp[2] == "01")
+                try
                 {
-                    int num = Convert.ToInt32(temp[3], 16);
-                    for(int i = 0;i < num; i++)
+                    socMutex.WaitOne();
+                    string[] temp = e.Data.Split('-');
+                    if (temp[0] == "CC" && temp[1] == "5F" && temp[2] == "01")
                     {
-                        string[] subTemp = copyStrArWithLen(temp, 4 + i *CpLen);
-                        int tempID = Convert.ToInt32(subTemp[0] + subTemp[1], 16);
-                        if (tempID == id)
+                        int num = Convert.ToInt32(temp[3], 16);
+                        for (int i = 0; i < num; i++)
                         {
-                            curUsr = new MyPoint(Convert.ToInt32(subTemp[2] + subTemp[3] + subTemp[4] + subTemp[5], 16),
-                                               Convert.ToInt32(subTemp[6] + subTemp[7] + subTemp[8] + subTemp[9], 16)
-                                               /*Convert.ToInt32(subTemp[10] + subTemp[11] + subTemp[12] + subTemp[13], 16)*/);
+                            string[] subTemp = copyStrArWithLen(temp, 4 + i * CpLen);
+                            int tempID = Convert.ToInt32(subTemp[0] + subTemp[1], 16);
+                            if (tempID == id)
+                            {
+                                curUsr = new MyPoint(Convert.ToInt32(subTemp[2] + subTemp[3] + subTemp[4] + subTemp[5], 16),
+                                                   Convert.ToInt32(subTemp[6] + subTemp[7] + subTemp[8] + subTemp[9], 16)
+                                    /*Convert.ToInt32(subTemp[10] + subTemp[11] + subTemp[12] + subTemp[13], 16)*/);
+                            }
                         }
                     }
+                    socMutex.ReleaseMutex();
                 }
-                socMutex.ReleaseMutex();
+                catch
+                {
+
+                }
             };
             socket.Connect();
             
@@ -143,7 +117,7 @@ namespace MIS
         bool isChecked = false;
         private void drawPos()
         {
-            while (true)
+            while (isStart)
             {
                 socMutex.WaitOne();
                 if (curUsr != null)
@@ -155,8 +129,10 @@ namespace MIS
                         {
                             Action VisAc = () =>
                             {
+                                if (isClosed) return;
                                 this.loc_Icon.Visible = true;
                             };
+                            if (isClosed) return;
                             loc_Icon.Invoke(VisAc);
                         }
                         else
@@ -169,14 +145,12 @@ namespace MIS
                     {
                         curPoint = new MyPoint(325 * (935.5 - curUsr.dx - 28) / 935.5 + 189.5, 0.34601 * (curUsr.dy - 35) - 65);
                         prePoint = new MyPoint(curPoint.dx, curPoint.dy);
-                        drawCurPos();
                         setLoc(curPoint);
                         prePoint = curPoint;
                     }
                     else
                     {
                         curPoint = new MyPoint(325 * (935.5 - curUsr.dx - 28) / 935.5 + 189.5, 0.34601 * (curUsr.dy - 35) - 65);
-                        drawCurPos();
                         setLoc(curPoint);
                         prePoint = curPoint;
                     }
@@ -188,14 +162,24 @@ namespace MIS
         {
             if (!isStart)
             {
+                
                 if (RfID_ID.Text.Trim() != "")
                 {
                     if (CplHelper.IsMemIdRight(RfID_ID.Text))
                     {
                         string RFIDID = DAL.InStock.getARFIDInfo(RfID_ID.Text.Trim());
-                        asyFun(int.Parse(RFIDID));
-                        _th = new System.Threading.Thread(drawPos);
-                        _th.Start();
+                        if (RFIDID != "")
+                        {
+                            isStart = true;
+                            asyFun(int.Parse(RFIDID));
+                            _th = new System.Threading.Thread(drawPos);
+                            _th.Start();
+                        }
+                        else
+                        {
+                            MessageBox.Show("没有找到该会员ID");
+                            return;
+                        }
                     }
                     else
                     {
@@ -211,13 +195,16 @@ namespace MIS
             }
             else
             {
-                isStart = false;
+                
                 if (socket != null)
                 {
                     socket.Close();
+                    socket = null;
                 }
                 isChecked = false;
                 _th.Abort();
+                isStart = false;
+                MessageBox.Show("关闭成功");
             }
             
         }
@@ -245,6 +232,24 @@ namespace MIS
                 this.dy = y;
             }
         }
-
+        bool isClosed = false;
+        private void PlanFloor_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (isStart)
+            {
+                MessageBox.Show("为防止程序冲突，请关闭搜寻");
+                e.Cancel = true;
+                return;
+            }
+            isClosed = true;
+            socMutex.Close();
+            
+            if (socket != null)
+            {
+                socket.Close();
+            }
+            isChecked = false;
+            _th.Abort();
+        }
     }
 }

@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GDIPlusDemo", "GDIPlusDemo\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restore Cmd Application", "Restore Cmd Application\Restore Cmd Application\Restore Cmd Application.csproj", "{9E8A55EB-484B-4C1C-8FCB-F7713B02F150}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entry", "Entry\Entry.csproj", "{E8EE39B8-F5B2-4114-A048-094CD028424C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -121,6 +123,16 @@ Global
 		{9E8A55EB-484B-4C1C-8FCB-F7713B02F150}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{9E8A55EB-484B-4C1C-8FCB-F7713B02F150}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{9E8A55EB-484B-4C1C-8FCB-F7713B02F150}.Release|x86.ActiveCfg = Release|Any CPU
+		{E8EE39B8-F5B2-4114-A048-094CD028424C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8EE39B8-F5B2-4114-A048-094CD028424C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8EE39B8-F5B2-4114-A048-094CD028424C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E8EE39B8-F5B2-4114-A048-094CD028424C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E8EE39B8-F5B2-4114-A048-094CD028424C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E8EE39B8-F5B2-4114-A048-094CD028424C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8EE39B8-F5B2-4114-A048-094CD028424C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8EE39B8-F5B2-4114-A048-094CD028424C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{E8EE39B8-F5B2-4114-A048-094CD028424C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{E8EE39B8-F5B2-4114-A048-094CD028424C}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

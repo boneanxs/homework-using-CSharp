@@ -216,9 +216,7 @@
     <EmbeddedResource Include="SalesRecord.resx">
       <DependentUpon>SalesRecord.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="..\Login\App.config">
-      <Link>App.config</Link>
-    </None>
+    <None Include="App.config" />
     <None Include="Properties\DataSources\MODEL.Member.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -244,82 +242,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\info.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\recharge.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\customrecord.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CDRWE.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CDRWE1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CDRWE2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CDRWE3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CDRWE4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\标题栏.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\标题栏2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\biaoti3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\无标题.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\register.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\生成质检单.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\质检单信息.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\扫描入库.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\入库单信息.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\库存盘点.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\report1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sale1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\detail.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\2Q %283%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\recharge.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\2Q.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\2Q %281%29.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\2Q %284%29.png" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -92,7 +92,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 42);
@@ -105,7 +105,7 @@
             this.tabControlHomePage.Controls.Add(this.tabPage2);
             this.tabControlHomePage.Controls.Add(this.tabPage3);
             this.tabControlHomePage.Controls.Add(this.tabPage4);
-            this.tabControlHomePage.Font = new System.Drawing.Font("SimSun", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tabControlHomePage.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tabControlHomePage.Location = new System.Drawing.Point(-2, 202);
             this.tabControlHomePage.Multiline = true;
             this.tabControlHomePage.Name = "tabControlHomePage";
@@ -129,12 +129,12 @@
             this.tabPage1.Controls.Add(this.btnChargeRecord);
             this.tabPage1.Controls.Add(this.btnCustomerInfo);
             this.tabPage1.Controls.Add(this.btnRegister);
-            this.tabPage1.Font = new System.Drawing.Font("STHupo", 14.25F);
+            this.tabPage1.Font = new System.Drawing.Font("华文琥珀", 14.25F);
             this.tabPage1.Location = new System.Drawing.Point(29, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.tabPage1.Size = new System.Drawing.Size(328, 507);
+            this.tabPage1.Size = new System.Drawing.Size(328, 517);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "会员管理";
             // 
@@ -184,7 +184,7 @@
             // btnCustomRecord
             // 
             this.btnCustomRecord.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCustomRecord.Font = new System.Drawing.Font("STHupo", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnCustomRecord.Font = new System.Drawing.Font("华文琥珀", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnCustomRecord.Location = new System.Drawing.Point(117, 415);
             this.btnCustomRecord.Name = "btnCustomRecord";
             this.btnCustomRecord.Size = new System.Drawing.Size(145, 50);
@@ -197,7 +197,7 @@
             // 
             this.btnChargeRecord.FlatAppearance.BorderSize = 0;
             this.btnChargeRecord.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnChargeRecord.Font = new System.Drawing.Font("STHupo", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnChargeRecord.Font = new System.Drawing.Font("华文琥珀", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnChargeRecord.Location = new System.Drawing.Point(117, 295);
             this.btnChargeRecord.Name = "btnChargeRecord";
             this.btnChargeRecord.Size = new System.Drawing.Size(145, 50);
@@ -210,7 +210,7 @@
             // 
             this.btnCustomerInfo.FlatAppearance.BorderSize = 0;
             this.btnCustomerInfo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCustomerInfo.Font = new System.Drawing.Font("STHupo", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnCustomerInfo.Font = new System.Drawing.Font("华文琥珀", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnCustomerInfo.Location = new System.Drawing.Point(114, 175);
             this.btnCustomerInfo.Name = "btnCustomerInfo";
             this.btnCustomerInfo.Size = new System.Drawing.Size(145, 50);
@@ -224,7 +224,7 @@
             this.btnRegister.FlatAppearance.BorderSize = 0;
             this.btnRegister.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnRegister.Font = new System.Drawing.Font("STHupo", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnRegister.Font = new System.Drawing.Font("华文琥珀", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnRegister.Location = new System.Drawing.Point(114, 55);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(145, 50);
@@ -246,11 +246,11 @@
             this.tabPage2.Controls.Add(this.pictureBox6);
             this.tabPage2.Controls.Add(this.pictureBox5);
             this.tabPage2.Controls.Add(this.ReceivingNote);
-            this.tabPage2.Font = new System.Drawing.Font("STHupo", 14.25F);
+            this.tabPage2.Font = new System.Drawing.Font("华文琥珀", 14.25F);
             this.tabPage2.Location = new System.Drawing.Point(29, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(328, 507);
+            this.tabPage2.Size = new System.Drawing.Size(328, 517);
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "商品管理";
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
@@ -363,12 +363,12 @@
             this.tabPage3.Controls.Add(this.pictureBox11);
             this.tabPage3.Controls.Add(this.btnSalesRecord);
             this.tabPage3.Controls.Add(this.btnReport);
-            this.tabPage3.Font = new System.Drawing.Font("STHupo", 14.25F);
+            this.tabPage3.Font = new System.Drawing.Font("华文琥珀", 14.25F);
             this.tabPage3.Location = new System.Drawing.Point(29, 4);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(328, 507);
+            this.tabPage3.Size = new System.Drawing.Size(328, 517);
             this.tabPage3.TabIndex = 3;
             this.tabPage3.Text = "销售管理";
             this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
@@ -454,7 +454,7 @@
             this.btn_planfloor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btn_planfloor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.btn_planfloor.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_planfloor.Font = new System.Drawing.Font("STHupo", 14.25F);
+            this.btn_planfloor.Font = new System.Drawing.Font("华文琥珀", 14.25F);
             this.btn_planfloor.Location = new System.Drawing.Point(124, 284);
             this.btn_planfloor.Name = "btn_planfloor";
             this.btn_planfloor.Size = new System.Drawing.Size(145, 50);
@@ -467,7 +467,7 @@
             // 
             this.btn_match.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
             this.btn_match.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_match.Font = new System.Drawing.Font("STHupo", 14.25F);
+            this.btn_match.Font = new System.Drawing.Font("华文琥珀", 14.25F);
             this.btn_match.Location = new System.Drawing.Point(124, 164);
             this.btn_match.Name = "btn_match";
             this.btn_match.Size = new System.Drawing.Size(145, 50);
@@ -499,7 +499,7 @@
             // label_post
             // 
             this.label_post.AutoSize = true;
-            this.label_post.Font = new System.Drawing.Font("STHupo", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_post.Font = new System.Drawing.Font("华文琥珀", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label_post.Location = new System.Drawing.Point(21, 51);
             this.label_post.Name = "label_post";
             this.label_post.Size = new System.Drawing.Size(66, 19);
@@ -509,7 +509,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("STHupo", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Font = new System.Drawing.Font("华文琥珀", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(21, 9);
             this.label2.Name = "label2";
@@ -542,6 +542,7 @@
             this.IsMdiContainer = true;
             this.MaximizeBox = false;
             this.Name = "Homepage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "主页";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Homepage_FormClosing);
             this.Load += new System.EventHandler(this.Homepage_Load);

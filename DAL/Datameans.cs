@@ -21,7 +21,7 @@ namespace DAL
         // 返回SqlConnection对象
         public static SqlConnection getcon()
         {
-            My_con = new SqlConnection(@"Data Source=pc24;Database=futureShop;User id=sa;PWD=123");   //用SqlConnection对象与指定的数据库相连接
+            My_con = new SqlConnection(@"Data Source=192.168.0.254;Database=futureShop;User id=sa;PWD=abc123@");   //用SqlConnection对象与指定的数据库相连接
             My_con.Open();  //打开数据库连接
             return My_con;  //返回SqlConnection对象的信息
         }
@@ -61,7 +61,7 @@ namespace DAL
 
         #region 执行SqlCommand命令改变数据表，不返回信息（用于增，删，改）
         /// 执行SqlCommand
-        public static void getsqlcom(string SQLstr)
+        public static bool getsqlcom(string SQLstr)
         {
             try
             {
@@ -70,8 +70,11 @@ namespace DAL
                 SQLcom.ExecuteNonQuery();   //执行SQL语句
                 SQLcom.Dispose();   //释放空间
                 con_close();
+                return true;
             }
-            catch (Exception e) { System.Console.WriteLine("a"); }
+            catch (Exception e) {
+                return false;
+            }
                                    //调用con_close()方法，关闭与数据库的连接
         }
         #endregion

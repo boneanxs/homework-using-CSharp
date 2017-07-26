@@ -17,7 +17,7 @@ namespace MIS
         public Homepage()
         {
             InitializeComponent();
-           // label2.Text = "操作员: " + MODEL.class1.staff.ID;
+           label2.Text = "操作员: " + MODEL.class1.staff.ID;
         }
 
         public static void warn()

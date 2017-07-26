@@ -67,8 +67,18 @@
             // comboBox_vendor
             // 
             this.comboBox_vendor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_vendor.Font = new System.Drawing.Font("SimSun", 12F);
+            this.comboBox_vendor.Font = new System.Drawing.Font("宋体", 12F);
             this.comboBox_vendor.FormattingEnabled = true;
+            this.comboBox_vendor.Items.AddRange(new object[] {
+            "娃哈哈",
+            "光明",
+            "伊利",
+            "蒙牛",
+            "百事",
+            "好吃点",
+            "康师傅",
+            "立白",
+            "汰渍"});
             this.comboBox_vendor.Location = new System.Drawing.Point(356, 27);
             this.comboBox_vendor.Name = "comboBox_vendor";
             this.comboBox_vendor.Size = new System.Drawing.Size(180, 24);
@@ -76,7 +86,7 @@
             // 
             // btnQuery
             // 
-            this.btnQuery.Font = new System.Drawing.Font("SimSun", 10F);
+            this.btnQuery.Font = new System.Drawing.Font("宋体", 10F);
             this.btnQuery.Location = new System.Drawing.Point(558, 22);
             this.btnQuery.Name = "btnQuery";
             this.btnQuery.Size = new System.Drawing.Size(75, 34);

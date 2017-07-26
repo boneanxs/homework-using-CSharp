@@ -36,15 +36,15 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.价格 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.价格 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -125,9 +125,43 @@
             this.dataGridView1.Size = new System.Drawing.Size(854, 382);
             this.dataGridView1.TabIndex = 8;
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "商品编号";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 150;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "商品名称";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 150;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "商品数量";
+            this.Column3.Name = "Column3";
+            // 
+            // 价格
+            // 
+            this.价格.HeaderText = "价格";
+            this.价格.Name = "价格";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "供应商";
+            this.Column6.Name = "Column6";
+            this.Column6.Width = 150;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "仓库";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 80;
+            // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("SimSun", 10F);
+            this.button1.Font = new System.Drawing.Font("宋体", 10F);
             this.button1.Location = new System.Drawing.Point(460, 529);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(90, 30);
@@ -147,46 +181,12 @@
             // comboBox1
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("SimSun", 12F);
+            this.comboBox1.Font = new System.Drawing.Font("宋体", 12F);
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(235, 81);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(180, 24);
             this.comboBox1.TabIndex = 11;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "仓库";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 80;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "供应商";
-            this.Column6.Name = "Column6";
-            this.Column6.Width = 150;
-            // 
-            // 价格
-            // 
-            this.价格.HeaderText = "价格";
-            this.价格.Name = "价格";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "商品数量";
-            this.Column3.Name = "Column3";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "商品名称";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 150;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "商品编号";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 150;
             // 
             // _9GodownEntry
             // 

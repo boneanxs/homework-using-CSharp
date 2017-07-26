@@ -29,6 +29,11 @@ namespace MIS
             //建立主表
             MODEL.QAmain qamain = new MODEL.QAmain();
             qamain.QAID = textBox1.Text;
+            if(comboBox1.Text == "")
+            {
+                MessageBox.Show("请选择供应商!~");
+                return;
+            }
             qamain.Supplier = comboBox1.Text;
             qamain.Operator = MODEL.class1.staff.ID;
             qamain.Date = System.DateTime.Now.ToLongDateString();
@@ -37,7 +42,22 @@ namespace MIS
             for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
             {
                 int curNum = i + 1;
-                MessageBox.Show(dataGridView1.Rows[i].Cells[0].Value.ToString());
+                //MessageBox.Show(dataGridView1.Rows[i].Cells[0].Value.ToString());
+                for (int t = 0; t < 5; t++)
+                {
+                    if(dataGridView1.Rows[i].Cells[t].Value == null)
+                    {
+                        MessageBox.Show("第" + curNum.ToString() + "行数据不完整!");
+                        return;
+                    }
+                }
+                    if (CplHelper.IsNull(dataGridView1.Rows[i].Cells[0].Value.ToString()) || CplHelper.IsNull(dataGridView1.Rows[i].Cells[1].Value.ToString())
+                        || CplHelper.IsNull(dataGridView1.Rows[i].Cells[2].Value.ToString())
+                        || CplHelper.IsNull(dataGridView1.Rows[i].Cells[4].Value.ToString()))
+                    {
+                        MessageBox.Show("第" + curNum.ToString() + "行数据不完整!");
+                        return;
+                    }
                 qadetail.QAID = textBox1.Text;
                 qadetail.GoodID = dataGridView1.Rows[i].Cells[0].Value.ToString();
                 qadetail.GoodName = dataGridView1.Rows[i].Cells[1].Value.ToString();
@@ -49,12 +69,7 @@ namespace MIS
                 }
                 qadetail.Amount = System.Convert.ToDouble(dataGridView1.Rows[i].Cells[3].Value.ToString());
                 qadetail.Check = dataGridView1.Rows[i].Cells[4].Value.ToString();
-                if(CplHelper.IsNull(qadetail.GoodID) || CplHelper.IsNull(qadetail.GoodName) || CplHelper.IsNull(qadetail.Unit)
-                    || CplHelper.IsNull(qadetail.Check))
-                {
-                    MessageBox.Show("第" + curNum.ToString() + "行数据不完整!");
-                    return;
-                }
+                
                 if (!CplHelper.IsGoodsIdRight(qadetail.GoodID))
                 {
                     MessageBox.Show("第" + curNum.ToString() + "行商品ID不正确，格式为B+10位数字!");
@@ -62,9 +77,16 @@ namespace MIS
                 }
                 DAL.class1.InputQAdetail(qadetail);
             }
+            if (dataGridView1.Rows.Count - 1 <= 0)
+            {
+                MessageBox.Show("无商品信息");
+                return;
+            }
             MessageBox.Show(qamain.QAID + "号质检单已经生成");
             Communal.mapDiag = new realTimeShow();
             Communal.mapDiag.goodsNum = 1;
+            
+            Communal.mapDiag.Show();
             Communal.mapDiag.qualityAnimate();
         }
 

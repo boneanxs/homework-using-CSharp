@@ -148,5 +148,10 @@ namespace MIS
                 timer1.Start();
             }
         }
+        public bool isClosed = false;
+        private void realTimeShow_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            isClosed = true;
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace DAL
     {
         public static int StaffLogin(Staff s)
         {
-            String sql = "select * from staff_table where Username ='" + s.ID + "'";
+            String sql = "select distinct * from staff_table where Username ='" + s.ID + "'";
             DataSet a = Datameans.getDataSet(sql);
             if (a.Tables[0].Rows.Count == 0)
             {
@@ -37,7 +37,7 @@ namespace DAL
 
         public static string StaffAuthority(string staffID)
         {
-            String sql = "select Postname from staffpost_table where Username ='" + staffID + "'"; //通过ID返回员工类型
+            String sql = "select distinct Postname from staffpost_table where Username ='" + staffID + "'"; //通过ID返回员工类型
             DataSet a = Datameans.getDataSet(sql);
             string post = a.Tables[0].Rows[0][0].ToString();
             System.Console.WriteLine("y");
@@ -81,14 +81,14 @@ namespace DAL
         {
             DataSet a = new DataSet();
             //"//依据姓名（即String s）查找顾客的会员卡号、姓名、电话号、性别、账户余额、身份证号、注册时间和注册人员");
-            String sql = "select * from member_table where Name ='" + s + "'";
+            String sql = "select distinct * from member_table where Name ='" + s + "'";
             a = Datameans.getDataSet(sql);
             return a;
         }
         public static DataSet QueryMembyMemId(String s)
         {
             DataSet a = new DataSet();
-            String sql = "select * from member_table where MemberID ='" + s + "'";
+            String sql = "select distinct * from member_table where MemberID ='" + s + "'";
             //依据会员卡号查找信息
             a = Datameans.getDataSet(sql);
             return a;
@@ -96,7 +96,7 @@ namespace DAL
         public static DataSet QueryMembyDate(String s)
         {
             DataSet a = new DataSet();
-            String sql = "select * from member_table where enrolldate ='" + s + "'";
+            String sql = "select distinct * from member_table where enrolldate ='" + s + "'";
             //依据日期查找会员信息  
             a = Datameans.getDataSet(sql);
             return a;
@@ -104,7 +104,7 @@ namespace DAL
         public static DataSet QueryMembyTel(String s)
         {
             DataSet a = new DataSet();
-            String sql = "select * from member_table where email ='" + s + "'";
+            String sql = "select distinct * from member_table where email ='" + s + "'";
             //依据电话号查找会员信息
             a = Datameans.getDataSet(sql);
             return a;
@@ -112,7 +112,7 @@ namespace DAL
         public static DataSet QueryMembyId(String s)
         {
             DataSet a = new DataSet();
-            String sql = "select * from member_table where identitycard ='" + s + "'";
+            String sql = "select distinct * from member_table where identitycard ='" + s + "'";
             //依据身份证号查找会员信息
             a = Datameans.getDataSet(sql);
             return a;
@@ -140,7 +140,7 @@ namespace DAL
         public static DataSet QueryRechargebyID(string MemID)
         {
             DataSet a = new DataSet();
-            String sql = "select payrecord_table.MemberID, member_table.Name, Payrecord_table.amount, member_table.balance, Payrecord_table.Paydate, Payrecord_table.operateStaff from payrecord_table ,member_table where payrecord_table.MemberID ='" + MemID + "' and payrecord_table.MemberID = member_table.MemberID";
+            String sql = "select distinct payrecord_table.MemberID, member_table.Name, Payrecord_table.amount, Payrecord_table.Paydate, Payrecord_table.operateStaff from payrecord_table ,member_table where payrecord_table.MemberID ='" + MemID + "' and payrecord_table.MemberID = member_table.MemberID";
             //在充值记录表中通过会员卡号查找会员卡号、姓名、充值金额、充值前后金额、充值时间、操作员信息
             a = Datameans.getDataSet(sql);
             return a;
@@ -148,7 +148,7 @@ namespace DAL
         public static DataSet QueryRechargebydate(string Date)
         {
             DataSet a = new DataSet();
-            String sql = "select Payrecord_table.MemberID, member_table.Name, Payrecord_table.amount, member_table.balance, Payrecord_table.Paydate, Payrecord_table.operateStaff from payrecord_table ,member_table where Payrecord_table.Paydate ='" + Date + "' and Payrecord_table.MemberID = member_table.MemberID"; ;
+            String sql = "select distinct Payrecord_table.MemberID, member_table.Name, Payrecord_table.amount, Payrecord_table.Paydate, Payrecord_table.operateStaff from payrecord_table ,member_table where Payrecord_table.Paydate ='" + Date + "' and Payrecord_table.MemberID = member_table.MemberID"; ;
             //在充值记录表中通过日期查找会员卡号、姓名、充值金额、充值前后金额、充值时间、操作员信息
             a = Datameans.getDataSet(sql);
             return a;
@@ -158,7 +158,7 @@ namespace DAL
         public static DataSet QueryCustomRecordbyId(string MemID)
         {
             DataSet a = new DataSet();
-            String sql = "select sell_table.MemberID, member_table.Name, sell_table.Goodsname, sell_table.Goodsnum, sell_table.Sellprice, sell_table.Totalprice, sell_table.Selltime from sell_table, member_table where sell_table.MemberID ='" + MemID + "'and sell_table.MemberID = member_table.MemberID";
+            String sql = "select distinct selldetail_table.MemberID, member_table.Name, selldetail_table.Goodsname, selldetail_table.Goodsnum, selldetail_table.Sellprice, selldetail_table.Totalprice, selldetail_table.Selltime from selldetail_table, member_table where selldetail_table.GoodsName ='" + MemID + "'and selldetail_table.MemberID = member_table.MemberID";
             //通过会员卡号查找会员卡号、姓名、商品类型、商品数量、单价、总金额、购买日期
             a = Datameans.getDataSet(sql);
             return a;
@@ -166,7 +166,8 @@ namespace DAL
         public static DataSet QueryCustomRecordbyDate(string Date)
         {
             DataSet a = new DataSet();
-            String sql = "select sell_table.MemberID, member_table.Name, sell_table.Goodsname, sell_table.Goodsnum, sell_table.Sellprice, sell_table.Totalprice, sell_table.Selltime from sell_table, member_table where sell_table.Selltime ='" + Date + "'and sell_table.MemberID = member_table.MemberID";
+            Date = Date + "%";
+            String sql = "select distinct selldetail_table.MemberID, member_table.Name, selldetail_table.Goodsname, selldetail_table.Goodsnum, selldetail_table.Sellprice, selldetail_table.Totalprice, selldetail_table.Selltime from selldetail_table, member_table where selldetail_table.Selltime like'" + Date + "'and selldetail_table.MemberID = member_table.MemberID";
             //通过购买日期查找会员卡号、姓名、商品类型、商品数量、单价、总金额、购买日期
             a = Datameans.getDataSet(sql);
             return a;
@@ -208,7 +209,7 @@ namespace DAL
         public static DataSet QuerybyQAID(string QAID)
         {
             DataSet a = new DataSet();
-            String sql = "select qualitymain_table.qualityID, qualitydetail_table.GoodsID, qualitydetail_table.Goodsname, qualitydetail_table.GoodsNum, qualitymain_table.Suppliername, qualitymain_table.checkdate, qualitymain_table.StaffID from qualitydetail_table ,qualitymain_table where qualitymain_table.qualityID ='" + QAID + "' and qualitymain_table.qualityID= qualitydetail_table.qualityID";
+            String sql = "select distinct qualitymain_table.qualityID, qualitydetail_table.GoodsID, qualitydetail_table.Goodsname, qualitydetail_table.GoodsNum, qualitymain_table.Suppliername, qualitymain_table.checkdate, qualitymain_table.StaffID from qualitydetail_table ,qualitymain_table where qualitymain_table.qualityID ='" + QAID + "' and qualitymain_table.qualityID= qualitydetail_table.qualityID";
             //依据质检单ID从主、从表查找质检单号、商品号、商品名称、数量、供应商、时间、质检员
             a = Datameans.getDataSet(sql);
             return a;
@@ -216,7 +217,7 @@ namespace DAL
         public static DataSet QuerybyGoodID(string GoodID)
         {
             DataSet a = new DataSet();
-            String sql = "select qualitymain_table.qualityID, qualitydetail_table.GoodsID, qualitydetail_table.Goodsname, qualitydetail_table.GoodsNum, qualitymain_table.Suppliername, qualitymain_table.checkdate, qualitymain_table.StaffID from qualitydetail_table ,qualitymain_table where qualitydetail_table.GoodsID ='" + GoodID + "' and qualitymain_table.qualityID= qualitydetail_table.qualityID";
+            String sql = "select distinct qualitymain_table.qualityID, qualitydetail_table.GoodsID, qualitydetail_table.Goodsname, qualitydetail_table.GoodsNum, qualitymain_table.Suppliername, qualitymain_table.checkdate, qualitymain_table.StaffID from qualitydetail_table ,qualitymain_table where qualitydetail_table.GoodsID ='" + GoodID + "' and qualitymain_table.qualityID= qualitydetail_table.qualityID";
             //依据货品ID从主、从表查找质检单号、商品号、商品名称、数量、供应商、时间、质检员
             a = Datameans.getDataSet(sql);
             return a;
@@ -224,7 +225,7 @@ namespace DAL
         public static DataSet QuerybyGoodName(string goodName)
         {
             DataSet a = new DataSet();
-            String sql = "select qualitymain_table.qualityID, qualitydetail_table.GoodsID, qualitydetail_table.Goodsname, qualitydetail_table.GoodsNum, qualitymain_table.Suppliername, qualitymain_table.checkdate, qualitymain_table.StaffID from qualitydetail_table ,qualitymain_table where qualitymain_table.Goodsname ='" + goodName + "' and qualitymain_table.qualityID= qualitydetail_table.qualityID";
+            String sql = "select distinct qualitymain_table.qualityID, qualitydetail_table.GoodsID, qualitydetail_table.Goodsname, qualitydetail_table.GoodsNum, qualitymain_table.Suppliername, qualitymain_table.checkdate, qualitymain_table.StaffID from qualitydetail_table ,qualitymain_table where qualitydetail_table.Goodsname ='" + goodName + "' and qualitymain_table.qualityID= qualitydetail_table.qualityID";
             //依据商品名称从主、从表查找质检单号、商品号、商品名称、数量、供应商、时间、质检员
             a = Datameans.getDataSet(sql);
             return a;
@@ -232,14 +233,14 @@ namespace DAL
         public static DataSet QuerybySupplier(string supplier)
         {
             DataSet a = new DataSet();
-            String sql = "select qualitymain_table.qualityID, qualitydetail_table.GoodsID, qualitydetail_table.Goodsname, qualitydetail_table.GoodsNum, qualitymain_table.Suppliername, qualitymain_table.checkdate, qualitymain_table.StaffID from qualitydetail_table ,qualitymain_table where qualitymain_table.Suppliername ='" + supplier + "' and qualitymain_table.qualityID = qualitydetail_table.qualityID";
+            String sql = "select distinct qualitymain_table.qualityID, qualitydetail_table.GoodsID, qualitydetail_table.Goodsname, qualitydetail_table.GoodsNum, qualitymain_table.Suppliername, qualitymain_table.checkdate, qualitymain_table.StaffID from qualitydetail_table ,qualitymain_table where qualitymain_table.Suppliername ='" + supplier + "' and qualitymain_table.qualityID = qualitydetail_table.qualityID";
             //依据供应商从主、从表查找质检单号、商品号、商品名称、数量、供应商、时间、质检员
             a = Datameans.getDataSet(sql);
             return a;
         }
         public static DataSet QuerybyDate(string date)
         {
-            String sql = "select qualitymain_table.qualityID, qualitydetail_table.GoodsID, qualitydetail_table.Goodsname, qualitydetail_table.GoodsNum, qualitymain_table.Suppliername, qualitymain_table.checkdate, qualitymain_table.StaffID from qualitydetail_table ,qualitymain_table where qualitymain_table.checkdate='" + date + "' and qualitymain_table.qualityID = qualitydetail_table.qualityID";
+            String sql = "select distinct qualitymain_table.qualityID, qualitydetail_table.GoodsID, qualitydetail_table.Goodsname, qualitydetail_table.GoodsNum, qualitymain_table.Suppliername, qualitymain_table.checkdate, qualitymain_table.StaffID from qualitydetail_table ,qualitymain_table where qualitymain_table.checkdate='" + date + "' and qualitymain_table.qualityID = qualitydetail_table.qualityID";
             DataSet a = new DataSet();
             //依据日期从主、从表查找质检单号、商品号、商品名称、数量、供应商、时间、质检员
             a = Datameans.getDataSet(sql);
@@ -247,7 +248,7 @@ namespace DAL
         }
         public static DataSet QuerybyOperator(string qaoperator)
         {
-            String sql = "select qualitymain_table.qualityID, qualitydetail_table.GoodsID, qualitydetail_table.Goodsname, qualitydetail_table.GoodsNum, qualitymain_table.Suppliername, qualitymain_table.checkdate, qualitymain_table.StaffID from qualitydetail_table ,qualitymain_table where qualitymain_table.StaffID ='" + qaoperator + "' and qualitymain_table.qualityID= qualitydetail_table.qualityID";
+            String sql = "select distinct qualitymain_table.qualityID, qualitydetail_table.GoodsID, qualitydetail_table.Goodsname, qualitydetail_table.GoodsNum, qualitymain_table.Suppliername, qualitymain_table.checkdate, qualitymain_table.StaffID from qualitydetail_table ,qualitymain_table where qualitymain_table.StaffID ='" + qaoperator + "' and qualitymain_table.qualityID= qualitydetail_table.qualityID";
             DataSet a = new DataSet();
             //依据质检员ID从主、从表查找质检单号、商品号、商品名称、数量、供应商、时间、质检员
             a = Datameans.getDataSet(sql);
@@ -297,7 +298,7 @@ namespace DAL
         public static DataSet QuerybyID(string ID)
         {
             DataSet a = new DataSet();
-            String sql = "select stockmain_table.GoodinID, stockdetail_table.GoodsID, stockdetail_table.Goodsname, stockdetail_table.GoodsinNum, stockdetail_table.Suppliername, stockmain_table.Indate, stockmain_table.Handlepeople from stockdetail_table,stockmain_table where stockdetail_table.GoodinID ='" + ID + "'and stockdetail_table.GoodinID = stockmain_table.GoodinID";
+            String sql = "select distinct stockmain_table.GoodinID, stockdetail_table.GoodsID, stockdetail_table.Goodsname, stockdetail_table.GoodsinNum, stockdetail_table.Suppliername, stockmain_table.Indate, stockmain_table.Handlepeople from stockdetail_table,stockmain_table where stockdetail_table.GoodinID ='" + ID + "'and stockdetail_table.GoodinID = stockmain_table.GoodinID";
             //通过入库单号查询入库单号、商品号、商品名称、商品数量、供应商、日期、入库员
             a = Datameans.getDataSet(sql);
             return a;
@@ -305,7 +306,7 @@ namespace DAL
         public static DataSet QuerybyGoodID(string ID)
         {
             DataSet a = new DataSet();
-            String sql = "select stockmain_table.GoodinID, stockdetail_table.GoodsID, stockdetail_table.Goodsname, stockdetail_table.GoodsinNum, stockdetail_table.Suppliername, stockmain_table.Indate, stockmain_table.Handlepeople from stockdetail_table,stockmain_table where stockdetail_table.GoodsID ='" + ID + "'and stockdetail_table.GoodinID = stockmain_table.GoodinID";
+            String sql = "select distinct stockmain_table.GoodinID, stockdetail_table.GoodsID, stockdetail_table.Goodsname, stockdetail_table.GoodsinNum, stockdetail_table.Suppliername, stockmain_table.Indate, stockmain_table.Handlepeople from stockdetail_table,stockmain_table where stockdetail_table.GoodsID ='" + ID + "'and stockdetail_table.GoodinID = stockmain_table.GoodinID";
             //通过商品号查询入库单号、商品号、商品名称、商品数量、供应商、日期、入库员
             a = Datameans.getDataSet(sql);
             return a;
@@ -313,7 +314,7 @@ namespace DAL
         public static DataSet QuerybyGoodName(string ID)
         {
             DataSet a = new DataSet();
-            String sql = "select stockmain_table.GoodinID, stockdetail_table.GoodsID, stockdetail_table.Goodsname, stockdetail_table.GoodsinNum, stockdetail_table.Suppliername, stockmain_table.Indate, stockmain_table.Handlepeople from stockdetail_table,stockmain_table where stockdetail_table.Goodsname ='" + ID + "'and stockdetail_table.GoodinID = stockmain_table.GoodinID";
+            String sql = "select distinct stockmain_table.GoodinID, stockdetail_table.GoodsID, stockdetail_table.Goodsname, stockdetail_table.GoodsinNum, stockdetail_table.Suppliername, stockmain_table.Indate, stockmain_table.Handlepeople from stockdetail_table,stockmain_table where stockdetail_table.Goodsname ='" + ID + "'and stockdetail_table.GoodinID = stockmain_table.GoodinID";
             //通过商品名查询入库单号、商品号、商品名称、商品数量、供应商、日期、入库员
             a = Datameans.getDataSet(sql);
             return a;
@@ -321,7 +322,7 @@ namespace DAL
         public static DataSet QuerybySupplier(string ID)
         {
             DataSet a = new DataSet();
-            String sql = "select stockmain_table.GoodinID, stockdetail_table.GoodsID, stockdetail_table.Goodsname, stockdetail_table.GoodsinNum, stockdetail_table.Suppliername, stockmain_table.Indate, stockmain_table.Handlepeople from stockdetail_table,stockmain_table where stockdetail_table.Suppliername ='" + ID + "'and stockdetail_table.GoodinID = stockmain_table.GoodinID";
+            String sql = "select distinct stockmain_table.GoodinID, stockdetail_table.GoodsID, stockdetail_table.Goodsname, stockdetail_table.GoodsinNum, stockdetail_table.Suppliername, stockmain_table.Indate, stockmain_table.Handlepeople from stockdetail_table,stockmain_table where stockdetail_table.Suppliername ='" + ID + "'and stockdetail_table.GoodinID = stockmain_table.GoodinID";
             //通过供应商查询入库单号、商品号、商品名称、商品数量、供应商、日期、入库员
             a = Datameans.getDataSet(sql);
             return a;
@@ -329,7 +330,7 @@ namespace DAL
         public static DataSet QuerybyDate(string ID)
         {
             DataSet a = new DataSet();
-            String sql = "select stockmain_table.GoodinID, stockdetail_table.GoodsID, stockdetail_table.Goodsname, stockdetail_table.GoodsinNum, stockdetail_table.Suppliername, stockmain_table.Indate, stockmain_table.Handlepeople from stockdetail_table,stockmain_table where stockdetail_table.Indate ='" + ID + "'and stockdetail_table.GoodinID = stockmain_table.GoodinID";
+            String sql = "select distinct stockmain_table.GoodinID, stockdetail_table.GoodsID, stockdetail_table.Goodsname, stockdetail_table.GoodsinNum, stockdetail_table.Suppliername, stockmain_table.Indate, stockmain_table.Handlepeople from stockdetail_table,stockmain_table where stockmain_table.Indate ='" + ID + "'and stockdetail_table.GoodinID = stockmain_table.GoodinID";
             //通过日期查询入库单号、商品号、商品名称、商品数量、供应商、日期、入库员
             a = Datameans.getDataSet(sql);
             return a;
@@ -337,7 +338,7 @@ namespace DAL
         public static DataSet QuerybyOperator(string ID)
         {
             DataSet a = new DataSet();
-            String sql = "select stockmain_table.GoodinID, stockdetail_table.GoodsID, stockdetail_table.Goodsname, stockdetail_table.GoodsinNum, stockdetail_table.Suppliername, stockmain_table.Indate, stockmain_table.Handlepeople from stockdetail_table,stockmain_table where stockdetail_table.Handlepeople ='" + ID + "'and stockdetail_table.GoodinID = stockmain_table.GoodinID";
+            String sql = "select distinct stockmain_table.GoodinID, stockdetail_table.GoodsID, stockdetail_table.Goodsname, stockdetail_table.GoodsinNum, stockdetail_table.Suppliername, stockmain_table.Indate, stockmain_table.Handlepeople from stockdetail_table,stockmain_table where stockmain_table.Handlepeople ='" + ID + "'and stockdetail_table.GoodinID = stockmain_table.GoodinID";
             //通过入库员查询入库单号、商品号、商品名称、商品数量、供应商、日期、入库员
             a = Datameans.getDataSet(sql);
             return a;
@@ -345,10 +346,10 @@ namespace DAL
 
         public static void InPutGoodsRFID(string goodID, string RFID)
         {
-            String sql = "insert into GoodsRFID(RFID_ID,Good_ID) values('"
+            String sql = "insert into GoodsRFID(RFID_ID,Good_ID,IS_SOLD) values('"
                   + RFID
                   + "','"
-                  + goodID + "')";
+                  + goodID + "','" + "0')";
             Datameans.getsqlcom(sql);
             //插入goodsrfid表
         }
@@ -358,7 +359,7 @@ namespace DAL
         public static goodDetail getDetailByID(string ID)
         {
             DataSet a = new DataSet();
-            String sql = "select GoodsRFID.Good_ID, stockdetail_table.Goodsname, stockdetail_table.Goodsinprice from GoodsRFID,stockdetail_table where GoodsRFID.RFID_ID ='" + ID + "' and stockdetail_table.GoodsID = GoodsRFID.Good_ID";
+            String sql = "select distinct GoodsRFID.Good_ID, stockdetail_table.Goodsname, stockdetail_table.Goodsinprice from GoodsRFID,stockdetail_table where GoodsRFID.RFID_ID ='" + ID + "' and stockdetail_table.GoodsID = GoodsRFID.Good_ID";
             //通过商品的RFID扫描得到商品详细信息：商品ID（非RFID），商品名称，商品单价，以goodDetail类型返回                       
             a = Datameans.getDataSet(sql);
             if (a.Tables[0].Rows.Count != 0) {
@@ -377,7 +378,7 @@ namespace DAL
         public static UserInfo getMemDetailByID(string ID)
         {
             DataSet a = new DataSet();
-            String sql = "select MemberID, Name, email,balance from member_table where member_table.MemberID='" + ID + "'";
+            String sql = "select distinct MemberID, Name, email,balance from member_table where member_table.MemberID='" + ID + "'";
             //通过会员ID得到会员的详细信息，以UserInfo类型返回 
             a = Datameans.getDataSet(sql);
             String MemID = a.Tables[0].Rows[0][0].ToString();
@@ -395,7 +396,7 @@ namespace DAL
         public static bool updateMemCostDetail(costInfo cost)  // 商品销售，添加销售信息 ， 商品销售表
         {
             DataSet a = new DataSet();
-            String sql = "select Goodsname,Suppliername from stockdetail_table where GoodsID = '" + cost.goodID + "'";
+            String sql = "select distinct Goodsname,Suppliername from stockdetail_table where GoodsID = '" + cost.goodID + "'";
             a = Datameans.getDataSet(sql);
             String Goodname = a.Tables[0].Rows[0][0].ToString();
             String suppliername = a.Tables[0].Rows[0][1].ToString();
@@ -415,7 +416,7 @@ namespace DAL
                       + cost.date + "')";
             Datameans.getsqlcom(sql1);
             //更新销售汇总表
-            string sql2 = "select GoodsID from selltotal_table where GoodsID='"
+            string sql2 = "select distinct GoodsID from selltotal_table where GoodsID='"
                + cost.goodID + "' and Date = '" + cost.date.Split(' ')[0] + "'";
             DataSet b = Datameans.getDataSet(sql2);
             if (b.Tables[0].Rows.Count == 0)
@@ -445,7 +446,7 @@ namespace DAL
         public static int isSold(string RFIDID)
         {
             DataSet a = new DataSet();
-            string sql = "select IS_SOLD from GoodsRFID where RFID_ID = '" + RFIDID + "'";
+            string sql = "select distinct IS_SOLD from GoodsRFID where RFID_ID = '" + RFIDID + "'";
             a = Datameans.getDataSet(sql);
             int issold = System.Convert.ToInt32(a.Tables[0].Rows[0][0].ToString());
             return issold;
@@ -468,7 +469,7 @@ namespace DAL
         public static string getSoldBillNumber()             //获取小票代号
         {
             DataSet a = new DataSet();
-            String sql = "select SellId from selldetail_table ";
+            String sql = "select distinct SellId from selldetail_table ";
             a = Datameans.getDataSet(sql);
             string sellID = "0";
             if (a.Tables[0].Rows.Count != 0)
@@ -478,16 +479,20 @@ namespace DAL
         public static string getARFIDInfo(string memID)
         {
             DataSet a = new DataSet();
-            String sql = "select RFIDID from MemberRFID_table where MemberID = '" + memID + "'";
+            String sql = "select distinct RFIDID from MemberRFID_table where MemberID = '" + memID + "'";
             a = Datameans.getDataSet(sql);
-            string RFIDID = a.Tables[0].Rows[0][0].ToString();
-            return RFIDID;
+            if (a.Tables[0].Rows.Count > 0)
+            {
+                string RFIDID = a.Tables[0].Rows[0][0].ToString();
+                return RFIDID;
+            }
+            return "";
             //通过会员ID获取到有源RFID的编号
         }
         public static lockerInfo getLockInfo(int LockNumber)
         {
             DataSet a = new DataSet();
-            string sql = "select * from LockBox_table where LockNumber = '" + LockNumber + "'";
+            string sql = "select distinct * from LockBox_table where LockNumber = '" + LockNumber + "'";
             a = Datameans.getDataSet(sql);
             int Locknumber = System.Convert.ToInt32(a.Tables[0].Rows[0][0].ToString());
             string memberID = a.Tables[0].Rows[0][1].ToString();
@@ -526,7 +531,7 @@ namespace DAL
     {
         public static void ChangeNum(MODEL.InStockdetail instockdetail)
         {
-            string sql = "select GoodsID from stockgoods_table where GoodsID='"
+            string sql = "select distinct GoodsID from stockgoods_table where GoodsID='"
                + instockdetail.GoodID + "'";
             DataSet a = Datameans.getDataSet(sql);
             if (a.Tables[0].Rows.Count == 0)
@@ -554,7 +559,7 @@ namespace DAL
         public static DataSet QuerybyGoodName(string name)
         {
             DataSet d = new DataSet();
-            string sql = "select stockdetail_table.GoodsID, stockdetail_table.Goodsname, stockgoods_table.GoodNum from stockgoods_table, stockdetail_table where stockdetail_table.Goodsname = '" + name + "' and stockdetail_table.GoodsID = stockgoods_table.GoodsID";
+            string sql = "select distinct stockdetail_table.GoodsID, stockdetail_table.Goodsname, stockgoods_table.GoodNum from stockgoods_table, stockdetail_table where stockdetail_table.Goodsname = '" + name + "' and stockdetail_table.GoodsID = stockgoods_table.GoodsID";
             //依据商品名称查找商品的ID、名称和库存数量
             d = Datameans.getDataSet(sql);
             return d;
@@ -562,7 +567,7 @@ namespace DAL
         public static DataSet QuerybyGoodID(string ID)
         {
             DataSet d = new DataSet();
-            string sql = "select stockdetail_table.GoodsID, stockdetail_table.Goodsname, stockgoods_table.GoodNum from stockgoods_table, stockdetail_table where  stockdetail_table.GoodsID = '" + ID + "' and stockdetail_table.GoodsID = stockgoods_table.GoodsID";
+            string sql = "select distinct stockdetail_table.GoodsID, stockdetail_table.Goodsname, stockgoods_table.GoodNum from stockgoods_table, stockdetail_table where  stockdetail_table.GoodsID = '" + ID + "' and stockdetail_table.GoodsID = stockgoods_table.GoodsID";
             //依据商品编号查找商品的ID、名称和库存数量
             d = Datameans.getDataSet(sql);
             return d;
@@ -588,7 +593,7 @@ namespace DAL
         public static string MemID()
         {
             DataSet a = new DataSet();
-            string sql = "select MemberID from member_table ";
+            string sql = "select distinct MemberID from member_table ";
             a = Datameans.getDataSet(sql);
             string newestMemID = a.Tables[0].Rows[a.Tables[0].Rows.Count - 1][0].ToString();
             //获取最近的会员卡号
@@ -597,7 +602,7 @@ namespace DAL
         public static string QAID()
         {
             DataSet a = new DataSet();
-            string sql = "select qualityID from qualitydetail_table ";
+            string sql = "select distinct qualityID from qualitydetail_table ";
             a = Datameans.getDataSet(sql);
             string newestQAID = a.Tables[0].Rows[a.Tables[0].Rows.Count - 1][0].ToString();
             //获取最近的质检单号
@@ -606,7 +611,7 @@ namespace DAL
         public static DataSet allQAID()
         {
             DataSet a = new DataSet();
-            string sql = "select qualityID from qualitydetail_table ";
+            string sql = "select distinct qualityID from qualitydetail_table ";
             a = Datameans.getDataSet(sql);
             //获取最近的质检单号
             return a;
@@ -614,7 +619,7 @@ namespace DAL
         public static string InID()
         {
             DataSet a = new DataSet();
-            string sql = "select GoodinID from stockdetail_table ";
+            string sql = "select distinct GoodinID from stockdetail_table ";
             a = Datameans.getDataSet(sql);
             string newestInID = a.Tables[0].Rows[a.Tables[0].Rows.Count - 1][0].ToString();
             //获取最近的入库单号
@@ -626,7 +631,7 @@ namespace DAL
         public static DataSet QuerybyGoodName(string GoodName)
         {
             DataSet a = new DataSet();
-            String sql = "select Goodname , GoodsID , amount ,Date from selltotal_table where Goodname = '" + GoodName + "'";
+            String sql = "select distinct Goodname , GoodsID , amount ,Date from selltotal_table where Goodname = '" + GoodName + "'";
             a = Datameans.getDataSet(sql);
             //根据商品名称查找售出产品的名称、数量、编号和日期；
             return a;
@@ -634,14 +639,14 @@ namespace DAL
         public static DataSet QuerybyDate(string Date)
         {
             DataSet a = new DataSet();
-            String sql = "select Goodname , GoodsID , amount ,Date from selltotal_table where Date = '" + Date + "'";
+            String sql = "select distinct Goodname , GoodsID , amount ,Date from selltotal_table where Date = '" + Date + "'";
             a = Datameans.getDataSet(sql);
             return a;
         }
         public static DataSet QuerybuSupplier(string supplier, string date)
         {
             DataSet a = new DataSet();
-            String sql = "select Goodname , GoodsID , amount ,Date from selltotal_table where suppliername = '" + supplier + "' and Date = '" + date + "'";
+            String sql = "select distinct Goodname , GoodsID , amount ,Date from selltotal_table where suppliername = '" + supplier + "' and Date = '" + date + "'";
             a = Datameans.getDataSet(sql);
             //根据supplier和date查找当天售出产品的编号、名称、日期和数量
             return a;
@@ -653,7 +658,7 @@ namespace DAL
     {
         public static void InputRecord(MODEL.RechargeRecord record)
         {
-            string sql1 = "insert into payrecord_table(MemberID,amount,Paydate,OperateStaff) values('"
+            string sql1 = "insert into payrecord_table(PayId,MemberID,amount,Paydate,OperateStaff) values('"  + "','"
                        + record.MemCardID
                        + "','"
                        + record.RechargeAmount
@@ -677,7 +682,7 @@ namespace DAL
         public static DataSet Convert(string QAID)
         {
             DataSet a = new DataSet();
-            String sql = "select qualitydetail_table.GoodsID , qualitydetail_table.Goodsname, qualitydetail_table.GoodsNum, qualitymain_table.Suppliername from qualitydetail_table,qualitymain_table where qualitydetail_table.qualityID = '" + QAID + "' and qualitydetail_table.qualityID = qualitymain_table.qualityID";
+            String sql = "select distinct qualitydetail_table.GoodsID , qualitydetail_table.Goodsname, qualitydetail_table.GoodsNum, qualitymain_table.Suppliername from qualitydetail_table,qualitymain_table where qualitydetail_table.qualityID = '" + QAID + "' and qualitydetail_table.qualityID = qualitymain_table.qualityID";
             a = Datameans.getDataSet(sql);
             return a;
 

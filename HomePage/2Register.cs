@@ -41,6 +41,8 @@ namespace MIS
                 string EPCData = txtMemID.Text;
                 EPCData = "A" + EPCData;
                 string UserData = txtAccount.Text;
+                reader.DisConnect();
+                reader.Connect();
                 if (reader.WriteEPCData(EPCData))
                     returnVal = true;
             }

@@ -55,7 +55,10 @@ namespace MIS
             dataGridView2.Columns[1].HeaderCell.Value = "商品名称";
             dataGridView2.Columns[2].HeaderCell.Value = "当日销售数量";
             dataGridView2.Columns[3].HeaderCell.Value = "销售日期";
-
+            for (int i = 0; i < 4; i++)
+            {
+                this.dataGridView2.Columns[i].Width = (dataGridView2.Width - 45) / 4;
+            }
         }
     }
 }

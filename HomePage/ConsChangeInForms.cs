@@ -18,7 +18,7 @@ namespace MIS
                 if (cons is Form)
                 {
                     Form myform = cons as Form;
-                  //  myform.MaximizeBox = true;
+                    //myform.StartPosition = FormStartPosition.CenterScreen;
                     myform.Size = new Size(920, 610);
                     myform.BackColor = ColorTranslator.FromHtml("#CCCCCC");
                 }

@@ -15,7 +15,7 @@ namespace Hit.RFID
         byte ComAdr = 0xff;
         byte Baud = 5;
         int FrmHandle = -1;
-        private int WriteTryMaxCount = 20;
+        private int WriteTryMaxCount = 100;
         public int isConnected = -1;
         //reading beginning adress and read length
         string userStart = "0";

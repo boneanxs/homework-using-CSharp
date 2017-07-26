@@ -147,6 +147,7 @@
             this.Controls.Add(this.backImgBox);
             this.Name = "realTimeShow";
             this.Text = "realTimeShow";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.realTimeShow_FormClosed);
             this.Load += new System.EventHandler(this.realTimeShow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.checkedBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uncheckedBox)).EndInit();

@@ -31,9 +31,9 @@ namespace MIS
             dataGridView1.Columns[1].HeaderCell.Value = "姓名";
             dataGridView1.Columns[2].HeaderCell.Value = "充值金额";
             //dataGridView1.Columns[3].HeaderCell.Value = "充值前金额";
-            dataGridView1.Columns[3].HeaderCell.Value = "充值后金额";
-            dataGridView1.Columns[4].HeaderCell.Value = "时间";
-            dataGridView1.Columns[5].HeaderCell.Value = "操作员";
+            //dataGridView1.Columns[3].HeaderCell.Value = "充值后金额";
+            dataGridView1.Columns[3].HeaderCell.Value = "时间";
+            dataGridView1.Columns[4].HeaderCell.Value = "操作员";
         }
 
         private void 按编号查询ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -73,9 +73,9 @@ namespace MIS
                 dataGridView1.DataSource = DAL.class1.QueryRechargebydate(dateTimePicker1.Text).Tables[0];
                 ChangeName();
             }
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 5; i++)
             {
-                this.dataGridView1.Columns[i].Width = (dataGridView1.Width -45)/ 6;
+                this.dataGridView1.Columns[i].Width = (dataGridView1.Width -45)/ 5;
             }
 
         }

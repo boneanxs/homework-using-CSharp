@@ -60,9 +60,17 @@ namespace MIS
                 DAL.InStock.InputDetail(instockdetail);
                 DAL.Inventory.ChangeNum(instockdetail);
             }
+            this.TopMost = false;
             MessageBox.Show("已保存成功");
+            if (Communal.mapDiag == null ||Communal.mapDiag.isClosed)
+            {
+                Communal.mapDiag = new realTimeShow();
+                Communal.mapDiag.isClosed = false;
+            }
             Communal.mapDiag.goodsNum = 1;
+            Communal.mapDiag.Show();
             Communal.mapDiag.goodsOnTableAnimate();
+            
         }
 
         private void _9GodownEntry_Load(object sender, EventArgs e)

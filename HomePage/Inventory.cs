@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Login;
 namespace MIS
 {
     public partial class Inventory : Form
@@ -67,7 +67,13 @@ namespace MIS
                     }
                 case 2:
                     {
-                        dataGridView1.DataSource = DAL.Inventory.QuerybyGoodID(textBox1.Text).Tables[0];
+                        if (CplHelper.IsGoodsIdRight(textBox1.Text))
+                            dataGridView1.DataSource = DAL.Inventory.QuerybyGoodID(textBox1.Text).Tables[0];
+                        else
+                        {
+                            MessageBox.Show("商品ID不正确");
+                            return;
+                        }
                         break;
                     }
                 case 3:
@@ -80,6 +86,7 @@ namespace MIS
                             inventory.Amount = System.Convert.ToDouble(dataGridView1.Rows[i].Cells[2].Value.ToString());
                             DAL.Inventory.PanDian(inventory);
                         }
+                        MessageBox.Show("盘点成功");
                         break;
                     }                 
             }

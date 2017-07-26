@@ -50,7 +50,14 @@ namespace RFID_Read
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            rdr = Reader.Create(ConAdr, ModuleTech.Region.NA, (ReaderType)antNum);
+            try
+            {
+                rdr = Reader.Create(ConAdr, ModuleTech.Region.NA, (ReaderType)antNum);
+            }catch(Exception ee)
+            {
+                MessageBox.Show("读写器连接失败，请尝试重新连接或检查IP是否正确、服务器是否开启");
+                this.Close();
+            }
             rdrParmSet();
             bs.DataSource = new BindingList<goodInfo>(goodsList);
             Items_Details.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -62,6 +69,11 @@ namespace RFID_Read
             autoAcq.Enabled = true;
             autoAcq.Elapsed += new ElapsedEventHandler(autoAcqData_Elapsed);
             autoAcq.AutoReset = true;
+
+            for (int i = 0; i < 3; i++)
+            {
+                this.Items_Details.Columns[i].Width = (Items_Details.Width - 50) / 4;
+            }
         }
         private void rdrParmSet() // read param set
         {
@@ -97,7 +109,10 @@ namespace RFID_Read
             int isMem = EBdData.IndexOf("A");
             if (isMem == 0)
             {
+                if (EBdData.Length != 8)
+                    return;
                 curEPC = EBdData;
+                
                 meb = InStock.getMemDetailByID(EBdData.Replace("A",""));
                 meb.EPCStr = EBdData;
                 if (ID_Text.InvokeRequired)
@@ -210,6 +225,11 @@ namespace RFID_Read
                 }
             }
             double bal = meb.balance - consumeNum;
+            if (bal < 0)
+            {
+                MessageBox.Show("余额不足");
+                return;
+            }
             if(billNumber == "")
             {
                 billNumber = InStock.getSoldBillNumber();

@@ -86,7 +86,7 @@
             // label_rfid
             // 
             this.label_rfid.AutoSize = true;
-            this.label_rfid.Location = new System.Drawing.Point(149, 487);
+            this.label_rfid.Location = new System.Drawing.Point(79, 484);
             this.label_rfid.Name = "label_rfid";
             this.label_rfid.Size = new System.Drawing.Size(77, 12);
             this.label_rfid.TabIndex = 5;
@@ -187,7 +187,7 @@
             this.cBoxQA.FormattingEnabled = true;
             this.cBoxQA.Location = new System.Drawing.Point(245, 35);
             this.cBoxQA.Name = "cBoxQA";
-            this.cBoxQA.Size = new System.Drawing.Size(121, 20);
+            this.cBoxQA.Size = new System.Drawing.Size(149, 20);
             this.cBoxQA.TabIndex = 17;
             this.cBoxQA.TextChanged += new System.EventHandler(this.cBoxQA_TextChanged);
             // 

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Login;
 namespace MIS
 {
     public partial class _8QAInfo : Form
@@ -105,13 +105,28 @@ namespace MIS
             {
                 case 1:
                     {
-                        dataGridView1.DataSource = DAL.class1.QuerybyQAID(textBox1.Text).Tables[0];
-
+                        if (CplHelper.IsQualityIDRight(textBox1.Text.Trim()))
+                        {
+                            dataGridView1.DataSource = DAL.class1.QuerybyQAID(textBox1.Text).Tables[0];
+                        }
+                        else
+                        {
+                            MessageBox.Show("质检信息输入错误");
+                            return;
+                        }
                         break;
                     }
                 case 2:
                     {
-                        dataGridView1.DataSource = DAL.class1.QuerybyGoodID(textBox1.Text).Tables[0];
+                        if (CplHelper.IsGoodsIdRight(textBox1.Text.Trim()))
+                        {
+                            dataGridView1.DataSource = DAL.class1.QuerybyGoodID(textBox1.Text).Tables[0];
+                        }
+                        else
+                        {
+                            MessageBox.Show("商品ID错误");
+                            return;
+                        }
                         break;
                     }
                 case 3:

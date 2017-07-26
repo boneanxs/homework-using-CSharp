@@ -136,6 +136,10 @@ namespace MIS
                     }
             }
             ChangeName();
+            for (int i = 0; i < 7; i++)
+            {
+                this.dataGridView1.Columns[i].Width = (dataGridView1.Width - 40) / 7;
+            }
         }
 
         private void _10GEInfo_Load(object sender, EventArgs e)

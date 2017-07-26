@@ -61,39 +61,46 @@ namespace Restore_Cmd_Application
                 if (isReceive)
                 {
                     //Console.WriteLine("读取啦!");
-                    TagReadData[] tagDatas = reader.Read(readDur);
-                    tagInfCount = 0;
-                    foreach (TagReadData tag in tagDatas)
+                    try
                     {
-                        if (tag.EPCString.IndexOf("A") == 0 && tag.EPCString.Length == 8)
+                        TagReadData[] tagDatas = reader.Read(readDur);
+                        tagInfCount = 0;
+                        foreach (TagReadData tag in tagDatas)
                         {
-
-                            lockerInfo locker = DAL.InStock.getLockInfo(tag.Antenna);
-                            if (locker.isLocked)
+                            if (tag.EPCString.IndexOf("A") == 0 && tag.EPCString.Length == 8)
                             {
-                                if (locker.userID == tag.EPCString)
+
+                                lockerInfo locker = DAL.InStock.getLockInfo(tag.Antenna);
+                                if (locker.isLocked)
                                 {
-                                    locker.userID = "";
-                                    locker.isLocked = false;
-                                    DAL.InStock.updateLockInfo(locker);
-                                    tagInfo[tagInfCount] = "会员卡号为" + tag.EPCString + ", " + tag.Antenna + "号箱柜解锁成功!\n";
+                                    if (locker.userID == tag.EPCString)
+                                    {
+                                        locker.userID = "";
+                                        locker.isLocked = false;
+                                        DAL.InStock.updateLockInfo(locker);
+                                        tagInfo[tagInfCount] = "会员卡号为" + tag.EPCString + ", " + tag.Antenna + "号箱柜解锁成功!\n";
+                                    }
+                                    else
+                                    {
+                                        tagInfo[tagInfCount] = "对不起，" + tag.Antenna + "号箱柜不是您的货柜！\n";
+                                    }
+                                    tagInfCount++;
                                 }
                                 else
                                 {
-                                    tagInfo[tagInfCount] = "对不起，" + tag.Antenna + "号箱柜不是您的货柜！\n";
+                                    locker.isLocked = true;
+                                    locker.userID = tag.EPCString;
+                                    DAL.InStock.updateLockInfo(locker);
+                                    tagInfo[tagInfCount] = "会员卡号为" + tag.EPCString + ", " + tag.Antenna + "号箱柜上锁成功!\n";
+                                    tagInfCount++;
                                 }
-                                tagInfCount++;
+                                isReceive = false;
                             }
-                            else
-                            {
-                                locker.isLocked = true;
-                                locker.userID = tag.EPCString;
-                                DAL.InStock.updateLockInfo(locker);
-                                tagInfo[tagInfCount] = "会员卡号为" + tag.EPCString + ", " + tag.Antenna + "号箱柜上锁成功!\n";
-                                tagInfCount++;
-                            }
-                            isReceive = false;
                         }
+                    }
+                    catch
+                    {
+                        
                     }
                     tagMux.ReleaseMutex();
                     Thread.Sleep(500);
@@ -109,6 +116,7 @@ namespace Restore_Cmd_Application
             }catch(Exception ee)
             {
                 Console.WriteLine("系统创建连接错误,错误代码为: " + ee.ToString());
+                Console.Read();
                 return;
             }
             try

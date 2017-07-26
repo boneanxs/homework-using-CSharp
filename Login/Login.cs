@@ -40,7 +40,7 @@ namespace Login
             }
             if (CplHelper.IsNull(textBox_user.Text) || CplHelper.IsNull(textBox_password.Text))
             {
-                MessageBox.Show("信息输入不全！");
+                MessageBox.Show("信息输入不正确！");
                 return;
             }
             MODEL.class1.staff = new Staff(textBox_user.Text, textBox_password.Text);

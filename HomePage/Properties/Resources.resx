@@ -118,12 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="CDRWE3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CDRWE3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
+  <!--<data name="CDRWE3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CDRWE3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>-->
+  <!--</data>
   <data name="register" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\2Q (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
+    <value>..\R--><!--esources\2Q (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>-->
+  <!--</data>
   <data name="report2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\report1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -165,7 +165,7 @@
   </data>
   <data name="生成质检单" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\生成质检单.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
+  </data>--><!--
   <data name="无标题" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\无标题.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -189,5 +189,5 @@
   </data>
   <data name="未标题-1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\未标题-1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
+  </data>-->
 </root>

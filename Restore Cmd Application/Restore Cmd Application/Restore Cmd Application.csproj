@@ -33,8 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ModuleAPI">
-      <HintPath>..\..\..\RFID_Read\RFID_Read\ModuleAPI.dll</HintPath>
+    <Reference Include="ModuleAPI, Version=1.10.11.11, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\ModuleAPI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

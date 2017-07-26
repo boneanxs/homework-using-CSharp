@@ -59,15 +59,32 @@ namespace MIS
 
         private void btn_Click(object sender, EventArgs e)
         {
-            if(state==1)
+            bool isSearched = false;
+            if(state==2)
             {
-                dataGridView1.DataSource = DAL.class1.QueryCustomRecordbyId(textBox1.Text).Tables[0];
-                ChangeName();
+                if (DAL.class1.QueryCustomRecordbyId(textBox1.Text).Tables.Count!=0)
+                {
+                    isSearched = true;
+                    dataGridView1.DataSource = DAL.class1.QueryCustomRecordbyId(textBox1.Text).Tables[0];
+                    ChangeName();
+                }
             }
-            else if(state==2)
+            else if(state==1)
             {
-                dataGridView1.DataSource = DAL.class1.QueryCustomRecordbyDate(dateTimePicker1.Text).Tables[0];
-                ChangeName();
+                if (DAL.class1.QueryCustomRecordbyDate(dateTimePicker1.Text).Tables.Count != 0)
+                {
+                    isSearched = true;
+                    dataGridView1.DataSource = DAL.class1.QueryCustomRecordbyDate(dateTimePicker1.Text).Tables[0];
+                    ChangeName();
+                }
+            }
+            if (isSearched)
+            {
+                isSearched = false;
+                for (int i = 0; i < 6; i++)
+                {
+                    this.dataGridView1.Columns[i].Width = (dataGridView1.Width - 30) / 7;
+                }
             }
         }
 

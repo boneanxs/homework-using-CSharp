@@ -31,15 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlanFloor));
             this.graph = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.traceGraph = new System.Windows.Forms.PictureBox();
             this.RfID_ID = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_search = new System.Windows.Forms.Button();
             this.loc_Icon = new System.Windows.Forms.PictureBox();
-            this.traceGraph = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.graph)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.loc_Icon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.traceGraph)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loc_Icon)).BeginInit();
             this.SuspendLayout();
             // 
             // graph
@@ -63,6 +63,16 @@
             this.groupBox1.Size = new System.Drawing.Size(669, 56);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
+            // 
+            // traceGraph
+            // 
+            this.traceGraph.BackColor = System.Drawing.Color.Transparent;
+            this.traceGraph.Location = new System.Drawing.Point(-29, -12);
+            this.traceGraph.Margin = new System.Windows.Forms.Padding(0);
+            this.traceGraph.Name = "traceGraph";
+            this.traceGraph.Size = new System.Drawing.Size(579, 613);
+            this.traceGraph.TabIndex = 8;
+            this.traceGraph.TabStop = false;
             // 
             // RfID_ID
             // 
@@ -104,16 +114,6 @@
             this.loc_Icon.TabStop = false;
             this.loc_Icon.Visible = false;
             // 
-            // traceGraph
-            // 
-            this.traceGraph.BackColor = System.Drawing.Color.Transparent;
-            this.traceGraph.Location = new System.Drawing.Point(-29, -12);
-            this.traceGraph.Margin = new System.Windows.Forms.Padding(0);
-            this.traceGraph.Name = "traceGraph";
-            this.traceGraph.Size = new System.Drawing.Size(579, 613);
-            this.traceGraph.TabIndex = 8;
-            this.traceGraph.TabStop = false;
-            // 
             // PlanFloor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -126,11 +126,12 @@
             this.MaximizeBox = false;
             this.Name = "PlanFloor";
             this.Text = "平面图";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PlanFloor_FormClosing);
             this.Load += new System.EventHandler(this.PlanFloor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.graph)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.loc_Icon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.traceGraph)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loc_Icon)).EndInit();
             this.ResumeLayout(false);
 
         }

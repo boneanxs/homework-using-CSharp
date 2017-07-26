@@ -97,7 +97,7 @@ namespace MIS
         private void button_scanned_Click(object sender, EventArgs e)
         {
             //生成入库单
-            if(dataGridView_scanned.Rows.Count == 0)
+            if(dataGridView_scanned.Rows.Count - 1 <= 0)
                 MessageBox.Show("确定扫描完成并生产入库单");
             else
             {
@@ -181,10 +181,19 @@ namespace MIS
 
                 }
                 MessageBox.Show("写入成功，请拿下RFID卡");
+                ReadTIDThread.Enabled = true;
+                if (Communal.mapDiag == null ||Communal.mapDiag.isClosed)
+                {
+                    Communal.mapDiag = new realTimeShow();
+                    Communal.mapDiag.isClosed = false;
+                }
                 Communal.mapDiag.goodsNum = 1;
+                Communal.mapDiag.Show();
                 Communal.mapDiag.scanAnimate();
+                Communal.mapDiag.TopMost = true;
+                
             }
-            ReadTIDThread.Enabled = true;
+            
         }
 
         private void label_goodstype_Click(object sender, EventArgs e)
@@ -194,6 +203,7 @@ namespace MIS
 
         private void Form_scan_FormClosing(object sender, FormClosingEventArgs e)
         {
+            ReadTIDThread.Close();
             Communal.h.AllButtonEnabled();
         }
 
